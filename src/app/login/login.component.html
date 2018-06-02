@@ -1,0 +1,25 @@
+<div class="container">
+
+  <form class="after-header form-signin" (ngSubmit)="onLoginClick(email.value,password.value)" #f="ngForm" [formGroup]="loginForm">
+    <h2 class="form-signin-heading text-center">Zaloguj się</h2>
+    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !loginForm.controls.email.valid }">
+      <label for="email" class="sr-only">Email</label>
+      <input type="email" placeholder="Adres email" class="form-control" id="email" name="email" #email formControlName="email">
+    </div>
+    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !loginForm.controls.password.valid }">
+      <label for="password" class="sr-only">Hasło</label>
+      <input type="password" placeholder="Password" class="form-control" id="password" name="password" #password formControlName="password">
+    </div>
+    <!-- <label for="inputEmail" class="sr-only">Email address</label> -->
+    <!-- <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus> -->
+    <!-- <label for="inputPassword" class="sr-only">Password</label> -->
+    <!-- <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div> -->
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Zaloguj</button>
+  </form>
+
+</div>
