@@ -30,7 +30,10 @@ import { AuthService } from "./services/auth.service";
 import { MatPaginatorIntlPL } from "./constants/matPaginatorPL";
 import { ReservationsListComponent } from "./components/reservations-list/reservations-list.component";
 import { RoleGuardService } from "./services/role-guard.service";
-import { AddBookComponent } from './components/add-book/add-book.component';
+import { AddBookComponent } from "./components/add-book/add-book.component";
+import { HTTP_INTERCEPTORS } from "@angular/common/http";
+import { CustomHttpInterceptor } from "./constants/custom-http-interceptor";
+import { EditBookComponent } from './components/edit-book/edit-book.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,8 @@ import { AddBookComponent } from './components/add-book/add-book.component';
     LoginComponent,
     BooksListComponent,
     ReservationsListComponent,
-    AddBookComponent
+    AddBookComponent,
+    EditBookComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +69,12 @@ import { AddBookComponent } from './components/add-book/add-book.component';
     BookService,
     RoleGuardService,
     AuthService,
-    { provide: MatPaginatorIntl, useClass: MatPaginatorIntlPL }
+    { provide: MatPaginatorIntl, useClass: MatPaginatorIntlPL },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CustomHttpInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

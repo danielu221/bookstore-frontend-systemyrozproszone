@@ -7,12 +7,14 @@ import { LoginComponent } from "./login/login.component";
 import { BooksListComponent } from "./components/books-list/books-list.component";
 import { RoleGuardService } from "./services/role-guard.service";
 import { AddBookComponent } from "./components/add-book/add-book.component";
+import { EditBookComponent } from "./components/edit-book/edit-book.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
   { path: "register", component: RegisterComponent },
   { path: "login", component: LoginComponent },
   { path: "addBook", component: AddBookComponent },
+  { path: "editBook", component: EditBookComponent },
   {
     path: "booksList",
     component: BooksListComponent

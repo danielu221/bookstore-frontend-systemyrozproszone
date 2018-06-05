@@ -29,7 +29,8 @@ export class LoginComponent implements OnInit {
     console.log(userEmail, userPassword);
     this.authService.login(userEmail, userPassword).subscribe(
       (response: any) => {
-        console.log(response.headers);
+        console.log(response.headers.get("Authorization"));
+        this.authService.token = response.headers.get("Authorization");
         this.userService.setCurrentUser(response.body);
       },
       error => {

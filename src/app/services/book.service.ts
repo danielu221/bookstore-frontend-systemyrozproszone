@@ -15,6 +15,13 @@ export class BookService {
   addBook(book: Book) {
     return this.http.post(apiUrl + "/book/create", book);
   }
+
+  reserveBook(userId: number, isbn: string) {
+    return this.http.post(
+      apiUrl + "/reservation/create/" + userId + "/" + isbn,
+      {}
+    );
+  }
   //   getById(id: number) {
   //     return this.http.get("/api/user/");
   //   }

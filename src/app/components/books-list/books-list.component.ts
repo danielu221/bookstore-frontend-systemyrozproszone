@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatTableDataSource, MatPaginator } from "@angular/material";
 import { Book } from "../../models/book";
+import { BookService } from "../../services/book.service";
+import { UserService } from "../../services/user.service";
 
 @Component({
   selector: "app-books-list",
@@ -8,14 +10,29 @@ import { Book } from "../../models/book";
   styleUrls: ["./books-list.component.css"]
 })
 export class BooksListComponent implements OnInit {
-  constructor() {}
+  constructor(
+    private bookService: BookService,
+    private userService: UserService
+  ) {}
+
+  books: Book[];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   displayedColumns = ["title", "author", "availableCopies", "dateOfRelease"];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSource = new MatTableDataSource(this.books);
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
+    this.bookService.getAll().subscribe(
+      (response: any) => {
+        this.books = response;
+        console.log(this.books);
+        this.dataSource.data = this.books;
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
   applyFilter(filterValue: string) {
@@ -25,7 +42,16 @@ export class BooksListComponent implements OnInit {
   }
 
   onReservationClick(book: any) {
-    console.log(book);
+    var userId = this.userService.getCurrentUser().id;
+    var isbn = book.isbn;
+    this.bookService.reserveBook(userId, isbn).subscribe(
+      (response: any) => {
+        console.log(response);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 }
 

@@ -8,6 +8,8 @@ import { UserService } from "./user.service";
 export class AuthService {
   constructor(private http: HttpClient, private userService: UserService) {}
 
+  token: string;
+
   login(userEmail: string, userPassword: string) {
     return this.http.post(
       apiUrl + "/signin",
