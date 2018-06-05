@@ -9,4 +9,5 @@ export class User {
   houseNumber: number;
   apartmentNumber: number;
   dateOfBirth: Date;
+  role: number;
 }

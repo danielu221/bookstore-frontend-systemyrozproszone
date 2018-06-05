@@ -1,14 +1,27 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
-import { HomeComponent } from "./home/home.component";
-import { RegisterComponent } from "./register/register.component";
+import { HomeComponent } from "./components/home/home.component";
+import { RegisterComponent } from "./components/register/register.component";
 import { LoginComponent } from "./login/login.component";
+import { BooksListComponent } from "./components/books-list/books-list.component";
+import { RoleGuardService } from "./services/role-guard.service";
+import { AddBookComponent } from "./components/add-book/add-book.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
   { path: "register", component: RegisterComponent },
-  { path: "login", component: LoginComponent }
+  { path: "login", component: LoginComponent },
+  { path: "addBook", component: AddBookComponent },
+  {
+    path: "booksList",
+    component: BooksListComponent
+    // ,
+    // canActivate: [RoleGuardService],
+    // data: {
+    //   expectedRole: "ADMINISTRATOR"
+    // }
+  }
 ];
 
 @NgModule({

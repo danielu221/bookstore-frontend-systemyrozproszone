@@ -8,6 +8,8 @@ import { apiUrl } from "../constants/api";
 export class UserService {
   constructor(private http: HttpClient) {}
 
+  currentUser: User;
+
   getAll() {
     return this.http.get(apiUrl + "/user/all");
   }
@@ -21,7 +23,7 @@ export class UserService {
   }
 
   login(userEmail: string, userPassword: string) {
-    return this.http.post(apiUrl + "/user/signin", {
+    return this.http.post(apiUrl + "/signin", {
       email: userEmail,
       password: userPassword
     });
@@ -33,5 +35,16 @@ export class UserService {
 
   delete(id: number) {
     return this.http.delete(apiUrl + "/user/delete/" + id);
+  }
+
+  getCurrentUser() {
+    return this.currentUser;
+  }
+
+  setCurrentUser(user: User) {
+    console.log("Current user data: \n");
+    console.log(user);
+    this.currentUser = user;
+    console.log(this.currentUser);
   }
 }
