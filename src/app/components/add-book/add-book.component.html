@@ -1,0 +1,71 @@
+<!-- <div class="container">
+  <div class="col-md-4 col-md-offset-4">
+    <form class="after-header add-book-form" (ngSubmit)="f2.form.valid && onAddClick()" #f2="ngForm">
+      <div class="form-group" [ngClass]="{ 'has-error': f2.submitted && !isbn.valid }">
+        <label for="isbn">ISBN</label>
+        <input type="text" class="form-control" id="isbn" name="isbn" #isbn="ngModel" [(ngModel)]="book.isbn" required>
+      </div>
+      <div class="form-group" [ngClass]="{ 'has-error': f2.submitted && !bookTitle.valid }">
+        <label for="bookTitle">Tytuł</label>
+        <input type="text" class="form-control" id="bookTitle" name="bookTitle" #bookTitle="ngModel" [(ngModel)]="book.bookTitle" required>
+      </div>
+      <div class="form-group" [ngClass]="{ 'has-error': f2.submitted && !author.valid }">
+        <label for="author">Autor</label>
+        <input type="text" class="form-control" id="author" name="author" #bookTitle="ngModel" [(ngModel)]="book.author" required>
+      </div>
+      <div class="form-group" [ngClass]="{ 'has-error': f2.submitted && !numberOfCopies.valid }">
+        <label for="numberOfCopies">Liczba egzemplarzy</label>
+        <input type="number" class="form-control" id="numberOfCopies" name="numberOfCopies" #numberOfCopies="ngModel" [(ngModel)]="book.numberOfCopies"
+          required>
+      </div>
+      <div class="form-group " [ngClass]="{ 'has-error': f2.submitted && !dateOfRelease.valid }">
+        <label for="dateOfRelease ">Data wydania</label>
+
+        <mat-datepicker-toggle [for]="myDatepicker "></mat-datepicker-toggle>
+        <mat-datepicker #myDatepicker></mat-datepicker>
+        <input [matDatepicker]="myDatepicker " (click)="myDatepicker.open()" #dateOfBirth="ngModel" [(ngModel)]="book.dateOfRelease"
+          name="dateOfRelease" class=" form-control col-md-8 " required onkeydown="return false">
+      </div>
+      <div class="submit-btn col-md-6 col-md-offset-3 text-center ">
+        <button type="submit " class="btn btn-primary ">Dodaj</button>
+      </div>
+    </form>
+
+  </div>
+</div> -->
+
+<div class="container">
+  <div class="col-md-6 col-md-offset-3">
+    <form class="after-header add-book-form" (ngSubmit)="f.form.valid && onAddClick()" #f="ngForm">
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !isbn.valid }">
+        <label for="isbn">ISBN</label>
+        <input type="text" class="form-control" id="isbn" name="isbn" #isbn="ngModel" [(ngModel)]="book.isbn" required>
+      </div>
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !bookTitle.valid }">
+        <label for="bookTitle">Tytuł</label>
+        <input type="text" class="form-control" id="bookTitle" name="bookTitle" #bookTitle="ngModel" [(ngModel)]="book.title" required>
+      </div>
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !author.valid }">
+        <label for="author">Autor</label>
+        <input type="text" class="form-control" id="author" name="author" #author="ngModel" [(ngModel)]="book.author" required>
+      </div>
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !numberOfCopies.valid }">
+        <label for="numberOfCopies">Liczba egzemplarzy</label>
+        <input type="number" class="form-control" id="numberOfCopies" name="numberOfCopies" #numberOfCopies="ngModel" [(ngModel)]="book.numberOfCopies"
+          required min="1">
+      </div>
+      <div class="form-group " [ngClass]="{ 'has-error': f.submitted && !dateOfRelease.valid }">
+        <label for="dateOfRelease ">Data wydania</label>
+
+        <mat-datepicker-toggle [for]="myDatepicker "></mat-datepicker-toggle>
+        <mat-datepicker #myDatepicker></mat-datepicker>
+        <input [matDatepicker]="myDatepicker " (click)="myDatepicker.open()" #dateOfRelease="ngModel" [(ngModel)]="book.dateOfRelease"
+          name="dateOfRelease" class=" form-control col-md-8 " required onkeydown="return false">
+      </div>
+      <div class="submit-btn col-md-6 col-md-offset-3 text-center ">
+        <button type="submit " class="btn btn-primary ">Dodaj</button>
+      </div>
+
+    </form>
+  </div>
+</div>

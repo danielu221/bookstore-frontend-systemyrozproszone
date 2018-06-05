@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="col-md-6 col-md-offset-3">
+    <form class="after-header register-form" (ngSubmit)="f.form.valid && onRegisterClick()" #f="ngForm">
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !firstname.valid }">
+        <label for="firstname">Imię</label>
+        <input type="text" class="form-control" id="firstname" name="firstname" #firstname="ngModel" [(ngModel)]="user.firstname"
+          required>
+      </div>
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !lastname.valid }">
+        <label for="lastname">Nazwisko</label>
+        <input type="text" class="form-control" id="lastname" name="lastname" #lastname="ngModel" [(ngModel)]="user.lastname" required>
+      </div>
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" #email="ngModel" [(ngModel)]="user.email" required email>
+      </div>
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+        <label for="password">Hasło</label>
+        <input type="password" class="form-control" id="password" name="password" #password="ngModel" [(ngModel)]="user.password"
+          required>
+      </div>
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !city.valid }">
+        <label for="city">Miejscowość</label>
+        <input type="text" class="form-control" id="city" name="city" #city="ngModel" [(ngModel)]="user.city" required>
+      </div>
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !street.valid }">
+        <label for="street">Ulica</label>
+        <input type="text" class="form-control" id="street" name="street" #street="ngModel" [(ngModel)]="user.street" required>
+      </div>
+      <div class="form-group col-md-6 " [ngClass]="{ 'has-error': f.submitted && !homeNumber.valid }">
+        <label for="homeNumber">Nr domu</label>
+        <input type="number" class="form-control" id="homeNumber" name="homeNumber" #homeNumber="ngModel" [(ngModel)]="user.homeNumber">
+      </div>
+      <div class="form-group col-md-6 " [ngClass]="{ 'has-error': f.submitted && !apartmentNumber.valid }">
+        <label for="apartmentNumber">Nr lokalu</label>
+        <input type="numer" class="form-control" id="apartmentNumber" name="apartmentNumber" #apartmentNumber="ngModel" [(ngModel)]="user.apartmentNumber ">
+      </div>
+      <div class="form-group " [ngClass]="{ 'has-error': f.submitted && !dateOfBirth.valid }">
+        <label for="dateOfBirth ">Data urodzenia</label>
+
+        <mat-datepicker-toggle [for]="myDatepicker "></mat-datepicker-toggle>
+        <mat-datepicker #myDatepicker></mat-datepicker>
+        <input [matDatepicker]="myDatepicker " (click)="myDatepicker.open()" #dateOfBirth="ngModel" [(ngModel)]="user.dateOfBirth"
+          name="dateOfBirth" class=" form-control col-md-8 " required onkeydown="return false">
+      </div>
+      <div class="submit-btn col-md-6 col-md-offset-3 text-center ">
+        <button type="submit " class="btn btn-primary ">Zarejestruj</button>
+      </div>
+
+    </form>
+  </div>
+</div>
