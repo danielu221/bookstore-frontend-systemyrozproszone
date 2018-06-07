@@ -47,4 +47,15 @@ export class UserService {
     this.currentUser = user;
     console.log(this.currentUser);
   }
+
+  updateRole(user: User, role: string) {
+    return this.http.put(
+      apiUrl + "/user/update/role/" + user.id + "/" + role,
+      {}
+    );
+  }
+
+  removeUser(user: User) {
+    return this.http.delete(apiUrl + "/user/delete/" + user.id, {});
+  }
 }

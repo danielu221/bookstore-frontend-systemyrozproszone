@@ -22,6 +22,14 @@ export class BookService {
       {}
     );
   }
+
+  updateBook(book: Book) {
+    return this.http.put(apiUrl + "/book/update/" + book.isbn, book);
+  }
+
+  removeBook(book: Book) {
+    return this.http.delete(apiUrl + "/book/delete/" + book.isbn, {});
+  }
   //   getById(id: number) {
   //     return this.http.get("/api/user/");
   //   }

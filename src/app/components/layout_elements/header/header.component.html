@@ -13,19 +13,28 @@
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li routerLinkActive="active">
-          <a routerLink="register">Rejestracja</a>
+          <a routerLink="register" *ngIf="getUserRole()==''">Rejestracja</a>
         </li>
         <li routerLinkActive="active">
-          <a routerLink="login">Login</a>
+          <a routerLink="login" *ngIf="getUserRole()==''">Login</a>
         </li>
         <li routerLinkActive="active">
-          <a routerLink="booksList">Wyszukaj ksiązki</a>
+          <a routerLink="booksList" *ngIf="getUserRole()=='USER'">Wyszukaj książki</a>
         </li>
         <li routerLinkActive="active">
-          <a routerLink="addBook">Dodaj ksiązkę</a>
+          <a routerLink="addBook" *ngIf="getUserRole()=='ADMINISTRATOR'">Dodaj książkę</a>
         </li>
         <li routerLinkActive="active">
-          <a routerLink="editBook">Edytuj ksiązkę</a>
+          <a routerLink="editBook" *ngIf="getUserRole()=='ADMINISTRATOR'">Edytuj książkę</a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="editUser" *ngIf="getUserRole()=='ADMINISTRATOR'">Edytuj użytkownika</a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="reservationsList" *ngIf="getUserRole()=='ADMINISTRATOR'">Rezerwacje</a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="rentStory" *ngIf="getUserRole()=='USER'">Historia wypożyczeń</a>
         </li>
       </ul>
     </div>

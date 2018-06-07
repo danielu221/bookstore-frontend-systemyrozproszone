@@ -22,7 +22,7 @@
 
     <ng-container matColumnDef="dateOfRelease">
       <th mat-header-cell *matHeaderCellDef> Data wydania </th>
-      <td mat-cell *matCellDef="let book"> {{book.dateOfRelease}} </td>
+      <td mat-cell *matCellDef="let book"> {{book.dateOfRelease | date}} </td>
     </ng-container>
 
     <ng-container matColumnDef="numberOfCopies">

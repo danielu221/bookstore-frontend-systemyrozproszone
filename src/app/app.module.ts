@@ -18,12 +18,13 @@ import {
   MatTableModule,
   MatPaginatorModule,
   MatPaginatorIntl,
-  MatDialogModule
+  MatDialogModule,
+  MatSelectModule
 } from "@angular/material";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule } from "@angular/forms";
 import { ReactiveFormsModule } from "@angular/forms";
-import { LoginComponent } from "./login/login.component";
+import { LoginComponent } from "./components/login/login.component";
 import { BooksListComponent } from "./components/books-list/books-list.component";
 import { BookService } from "./services/book.service";
 import { AuthService } from "./services/auth.service";
@@ -33,7 +34,9 @@ import { RoleGuardService } from "./services/role-guard.service";
 import { AddBookComponent } from "./components/add-book/add-book.component";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { CustomHttpInterceptor } from "./constants/custom-http-interceptor";
-import { EditBookComponent } from './components/edit-book/edit-book.component';
+import { EditBookComponent } from "./components/edit-book/edit-book.component";
+import { EditUserComponent } from "./components/edit-user/edit-user.component";
+import { RentStoryComponent } from './components/rent-story/rent-story.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +50,9 @@ import { EditBookComponent } from './components/edit-book/edit-book.component';
     BooksListComponent,
     ReservationsListComponent,
     AddBookComponent,
-    EditBookComponent
+    EditBookComponent,
+    EditUserComponent,
+    RentStoryComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +67,8 @@ import { EditBookComponent } from './components/edit-book/edit-book.component';
     HttpClientModule,
     ReactiveFormsModule,
     MatPaginatorModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSelectModule
   ],
   providers: [
     UserService,

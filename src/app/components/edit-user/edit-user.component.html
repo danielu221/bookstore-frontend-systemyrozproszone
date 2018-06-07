@@ -1,0 +1,44 @@
+<div class="container after-header">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Szukaj">
+  </mat-form-field>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 text-center">
+
+    <ng-container matColumnDef="firstname">
+      <th mat-header-cell *matHeaderCellDef> Imię </th>
+      <td mat-cell *matCellDef="let user"> {{user.firstname}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="lastname">
+      <th mat-header-cell *matHeaderCellDef> Nazwisko </th>
+      <td mat-cell *matCellDef="let user"> {{user.lastname}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="role">
+      <th mat-header-cell *matHeaderCellDef> Rola </th>
+      <td mat-cell *matCellDef="let user">
+        <mat-form-field>
+          <mat-select #roleSelection [(value)]="user.role" (selectionChange)="onRoleSelectionChange(user,roleSelection.value)">
+            <mat-option value="LIBRARY_EMPLOYEE">Pracownik biblioteki</mat-option>
+            <mat-option value="ADMINISTRATOR">Administrator</mat-option>
+            <mat-option value="USER">Użytkownik</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="deleteButton">
+      <th mat-header-cell *matHeaderCellDef> </th>
+      <td mat-cell *matCellDef="let user">
+        <button type="button" class="btn btn-danger " (click)="onRemoveClick(user)">Usuń</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
