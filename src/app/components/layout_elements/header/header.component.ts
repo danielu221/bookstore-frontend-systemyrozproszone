@@ -8,16 +8,28 @@ import { UserService } from "../../../services/user.service";
   styleUrls: ["./header.component.css"]
 })
 export class HeaderComponent implements OnInit {
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    private authService: AuthService
+  ) {}
   userRole: string;
   ngOnInit() {}
 
   getUserRole() {
-    if (this.userService.currentUser) {
-      this.userRole = this.userService.currentUser.role;
+    var currentUser = this.userService.getCurrentUser();
+    if (currentUser) {
+      this.userRole = currentUser.role;
       return this.userRole;
     } else {
       return "";
     }
+  }
+
+  isAuthenticated() {
+    return this.authService.isAuthenticated();
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

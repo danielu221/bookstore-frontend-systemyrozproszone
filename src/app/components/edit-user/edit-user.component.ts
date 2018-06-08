@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { UserService } from "../../services/user.service";
 import { User } from "../../models/user";
 import { MatPaginator, MatTableDataSource } from "@angular/material";
+import { AlertService } from "../../services/alert.service";
 
 @Component({
   selector: "app-edit-user",
@@ -9,9 +10,12 @@ import { MatPaginator, MatTableDataSource } from "@angular/material";
   styleUrls: ["./edit-user.component.css"]
 })
 export class EditUserComponent implements OnInit {
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    private alertService: AlertService
+  ) {}
 
-  users: User[] = ELEMENT_DATA;
+  users: User[] = this.users;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   displayedColumns = ["firstname", "lastname", "role", "deleteButton"];
@@ -66,6 +70,7 @@ export class EditUserComponent implements OnInit {
     this.userService.updateRole(user, selectedRole).subscribe(
       (response: any) => {
         console.log(response);
+        this.alertService.success("Zmieniono rolę uzytkownika");
       },
       error => {
         console.log(error);
@@ -73,33 +78,33 @@ export class EditUserComponent implements OnInit {
     );
   }
 }
-const ELEMENT_DATA: User[] = [
-  {
-    id: 1,
-    firstname: "Arkadiusz",
-    lastname: "Gotfryd",
-    email: "arkadiusz@library.com",
-    role: "LIBRARY_EMPLOYEE"
-  },
-  {
-    id: 2,
-    firstname: "Mateusz",
-    lastname: "Danieluk",
-    email: "mateusz@library.com",
-    role: "USER"
-  },
-  {
-    id: 3,
-    firstname: "Administrator",
-    lastname: "Administrator",
-    email: "administrator@library.com",
-    role: "ADMINISTRATOR"
-  },
-  {
-    id: 510,
-    firstname: "Testowy",
-    lastname: "Testy",
-    email: "testtest@wp.pl",
-    role: "USER"
-  }
-];
+// const ELEMENT_DATA: User[] = [
+//   {
+//     id: 1,
+//     firstname: "Arkadiusz",
+//     lastname: "Gotfryd",
+//     email: "arkadiusz@library.com",
+//     role: "LIBRARY_EMPLOYEE"
+//   },
+//   {
+//     id: 2,
+//     firstname: "Mateusz",
+//     lastname: "Danieluk",
+//     email: "mateusz@library.com",
+//     role: "USER"
+//   },
+//   {
+//     id: 3,
+//     firstname: "Administrator",
+//     lastname: "Administrator",
+//     email: "administrator@library.com",
+//     role: "ADMINISTRATOR"
+//   },
+//   {
+//     id: 510,
+//     firstname: "Testowy",
+//     lastname: "Testy",
+//     email: "testtest@wp.pl",
+//     role: "USER"
+//   }
+// ];

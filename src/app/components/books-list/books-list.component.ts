@@ -3,6 +3,7 @@ import { MatTableDataSource, MatPaginator } from "@angular/material";
 import { Book } from "../../models/book";
 import { BookService } from "../../services/book.service";
 import { UserService } from "../../services/user.service";
+import { ReservationService } from "../../services/reservation.service";
 
 @Component({
   selector: "app-books-list",
@@ -12,7 +13,8 @@ import { UserService } from "../../services/user.service";
 export class BooksListComponent implements OnInit {
   constructor(
     private bookService: BookService,
-    private userService: UserService
+    private userService: UserService,
+    private reservationService: ReservationService
   ) {}
 
   books: Book[];
@@ -26,13 +28,55 @@ export class BooksListComponent implements OnInit {
     this.bookService.getAll().subscribe(
       (response: any) => {
         this.books = response;
+        this.books.map(book => (book.isReserved = false));
         console.log(this.books);
+        this.getReservationISBN();
         this.dataSource.data = this.books;
       },
       error => {
         console.log(error);
       }
     );
+  }
+
+  getReservationISBN() {
+    let reservationISBN = this.reservationService.getReservationForUser(
+      this.userService.getCurrentUser().id
+    );
+
+    reservationISBN.subscribe(
+      (response: any) => {
+        console.log("RESERVATIONS");
+        console.log(response);
+        response.map(reservation => {
+          console.log(reservation.book.isbn);
+          console.log(
+            this.setReservationsTag(
+              reservation.reservation.id,
+              reservation.book.isbn
+            )
+          );
+        });
+
+        //this.dataSource.data = this.books;
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  setReservationsTag(reservationId: number, isbn: string) {
+    //console.log(this.books);
+    var result = this.dataSource.data.filter(function(book) {
+      //console.log(book);
+      if (book.isbn == isbn) {
+        book.isReserved = true;
+        book.reservationId = reservationId;
+      }
+      return book.isbn == isbn;
+    });
+    return result;
   }
 
   applyFilter(filterValue: string) {
@@ -44,9 +88,25 @@ export class BooksListComponent implements OnInit {
   onReservationClick(book: any) {
     var userId = this.userService.getCurrentUser().id;
     var isbn = book.isbn;
-    this.bookService.reserveBook(userId, isbn).subscribe(
+    book.isReserved = true;
+    this.reservationService.reserveBook(userId, isbn).subscribe(
       (response: any) => {
         console.log(response);
+        book.reservationId = response.reservationId;
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  onRemoveReservationClick(book: any) {
+    var reservationId = book.reservationId;
+    book.isReserved = false;
+    this.reservationService.removeReservation(reservationId).subscribe(
+      (response: any) => {
+        console.log(response);
+        book.reservationId = null;
       },
       error => {
         console.log(error);

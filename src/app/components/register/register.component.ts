@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { UserService } from "../../services/user.service";
 import { User } from "../../models/user";
+import { Router } from "@angular/router";
+import { AlertService } from "../../services/alert.service";
 
 @Component({
   selector: "app-register",
@@ -10,7 +12,11 @@ import { User } from "../../models/user";
 export class RegisterComponent implements OnInit {
   user: any = {};
 
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private alertService: AlertService
+  ) {}
 
   ngOnInit() {}
 
@@ -22,6 +28,8 @@ export class RegisterComponent implements OnInit {
         // this.alertService.success('Registration successful', true);
         // this.router.navigate(['/login']);
         console.log(data);
+        this.alertService.success("Utworzono konto uzytkownika");
+        setTimeout(this.router.navigate(["/login"]), 1200);
       },
       error => {
         // this.alertService.error(error);

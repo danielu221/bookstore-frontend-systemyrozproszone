@@ -36,7 +36,11 @@ import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { CustomHttpInterceptor } from "./constants/custom-http-interceptor";
 import { EditBookComponent } from "./components/edit-book/edit-book.component";
 import { EditUserComponent } from "./components/edit-user/edit-user.component";
-import { RentStoryComponent } from './components/rent-story/rent-story.component';
+import { RentStoryComponent } from "./components/rent-story/rent-story.component";
+import { ReservationService } from "./services/reservation.service";
+import { AlertComponent } from "./components/alert/alert.component";
+import { AlertService } from "./services/alert.service";
+import { RentService } from "./services/rent.service";
 
 @NgModule({
   declarations: [
@@ -52,7 +56,8 @@ import { RentStoryComponent } from './components/rent-story/rent-story.component
     AddBookComponent,
     EditBookComponent,
     EditUserComponent,
-    RentStoryComponent
+    RentStoryComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -74,6 +79,9 @@ import { RentStoryComponent } from './components/rent-story/rent-story.component
     UserService,
     BookService,
     RoleGuardService,
+    ReservationService,
+    RentService,
+    AlertService,
     AuthService,
     { provide: MatPaginatorIntl, useClass: MatPaginatorIntlPL },
     {

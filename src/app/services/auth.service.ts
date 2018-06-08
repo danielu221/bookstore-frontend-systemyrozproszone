@@ -28,4 +28,17 @@ export class AuthService {
     //console.log(Object.keys(currentUser).length != 0);
     return currentUser != null;
   }
+
+  setToken(token: string) {
+    this.token = token;
+    localStorage.setItem("token", token);
+  }
+
+  getToken() {
+    return localStorage.getItem("token");
+  }
+
+  logout() {
+    this.userService.setCurrentUser(null);
+  }
 }

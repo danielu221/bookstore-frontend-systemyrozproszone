@@ -69,7 +69,7 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:8080/user/update/role/:userId/:roleId",
+					"name": "http://localhost:8080/user/update/role/:userId/:rolename",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -87,7 +87,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/user/update/role/1/3",
+							"raw": "{{BASE_URL}}/user/update/role/2/USER",
 							"host": [
 								"{{BASE_URL}}"
 							],
@@ -95,8 +95,8 @@
 								"user",
 								"update",
 								"role",
-								"1",
-								"3"
+								"2",
+								"USER"
 							]
 						}
 					},
@@ -398,6 +398,38 @@
 			"name": "Reservation",
 			"description": "",
 			"item": [
+				{
+					"name": "http://localhost:8080/reservation/all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/reservation/all",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"reservation",
+								"all"
+							]
+						},
+						"description": "Get all reservations"
+					},
+					"response": []
+				},
 				{
 					"name": "http://localhost:8080/reservation/user/:userId",
 					"request": {

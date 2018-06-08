@@ -5,4 +5,6 @@ export class Book {
   dateOfRelease: number;
   numberOfCopies: number;
   availableCopies: number;
+  isReserved?: boolean;
+  reservationId?: number;
 }

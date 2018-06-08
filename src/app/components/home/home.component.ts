@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs/Observable";
 import "rxjs/Rx";
+import { AuthService } from "../../services/auth.service";
+import { UserService } from "../../services/user.service";
 
 @Component({
   selector: "app-home",
@@ -8,7 +10,10 @@ import "rxjs/Rx";
   styleUrls: ["./home.component.css"]
 })
 export class HomeComponent implements OnInit {
-  constructor() {}
+  constructor(
+    private authService: AuthService,
+    private userService: UserService
+  ) {}
   public headings: Array<Object>;
 
   ngOnInit() {
@@ -36,5 +41,13 @@ export class HomeComponent implements OnInit {
         btnText: "Więcej >>"
       }
     ];
+  }
+
+  isAuthenticated() {
+    return this.authService.isAuthenticated();
+  }
+
+  getUserRole() {
+    return this.userService.getCurrentUser().role;
   }
 }

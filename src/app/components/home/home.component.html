@@ -1,8 +1,44 @@
-<app-jumbotron></app-jumbotron>
-<div class="container">
-    <div class="row">
-        <div class="col-md-4 text-center heading-margin" *ngFor="let heading of headings">
-            <app-heading imageURL={{heading.imageURL}} title={{heading.title}} btnText={{heading.btnText}}>{{heading.text}}</app-heading>
+<div *ngIf="!isAuthenticated()">
+    <app-jumbotron [h1Text]="'Witaj w wypożyczalni'">Już teraz przekonaj się jak proste i przyjemne może być wypożyczanie książek. Wystarczy, że utworzysz konto i zarezerwujesz
+        wybrany tytuł.</app-jumbotron>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 text-center heading-margin" *ngFor="let heading of headings">
+                <app-heading imageURL={{heading.imageURL}} title={{heading.title}} btnText={{heading.btnText}}>{{heading.text}}</app-heading>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="isAuthenticated()">
+    <div *ngIf="getUserRole()=='USER'">
+        <app-jumbotron [h1Text]="'Witaj użytkowniku'">Wyszukaj interesującej Cię pozycji, a następnie ją zarezerwuj.</app-jumbotron>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 text-center heading-margin" *ngFor="let heading of headings">
+                    <app-heading imageURL={{heading.imageURL}} title={{heading.title}} btnText={{heading.btnText}}>{{heading.text}}</app-heading>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="getUserRole()=='ADMINISTRATOR'">
+        <app-jumbotron [h1Text]="'Witaj w panelu administratora'">Możesz tu zarządzać książkami, użytkownikami oraz rezerwacjami.</app-jumbotron>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 text-center heading-margin" *ngFor="let heading of headings">
+                    <app-heading imageURL={{heading.imageURL}} title={{heading.title}} btnText={{heading.btnText}}>{{heading.text}}</app-heading>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="getUserRole()=='LIBRARY_EMPLOYEE'">
+        <app-jumbotron [h1Text]="'Witaj'">Z tego miejsca mo</app-jumbotron>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 text-center heading-margin" *ngFor="let heading of headings">
+                    <app-heading imageURL={{heading.imageURL}} title={{heading.title}} btnText={{heading.btnText}}>{{heading.text}}</app-heading>
+                </div>
+            </div>
         </div>
     </div>
 </div>

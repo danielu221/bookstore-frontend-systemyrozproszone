@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Biblioteka publiczna</a>
+      <a class="navbar-brand" href="">Biblioteka publiczna</a>
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
@@ -35,6 +35,9 @@
         </li>
         <li routerLinkActive="active">
           <a routerLink="rentStory" *ngIf="getUserRole()=='USER'">Historia wypożyczeń</a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="logout" *ngIf="isAuthenticated()" (click)="logout()">Wyloguj</a>
         </li>
       </ul>
     </div>

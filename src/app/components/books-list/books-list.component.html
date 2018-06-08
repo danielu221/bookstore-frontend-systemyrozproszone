@@ -34,8 +34,9 @@
       <th mat-header-cell *matHeaderCellDef> Akcja</th>
       <td mat-cell *matCellDef="let book">
 
-        <button *ngIf="book.availableCopies" type="button" class="btn btn-success" (click)="onReservationClick(book)">Rezerwuj</button>
-        <button *ngIf="!book.availableCopies" type="button" class="btn btn-danger">Niedostępna</button>
+        <button *ngIf="book.availableCopies && !book.isReserved" type="button" class="btn btn-success" (click)="onReservationClick(book)">Rezerwuj</button>
+        <button *ngIf="!book.availableCopies && !book.isReserved" type="button" class="btn btn-danger">Niedostępna</button>
+        <button *ngIf="book.isReserved" type="button" class="btn btn-danger" (click)="onRemoveReservationClick(book)">Anuluj rezerwacje</button>
       </td>
     </ng-container>
 

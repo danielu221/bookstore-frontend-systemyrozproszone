@@ -19,7 +19,9 @@ export class UserService {
   //   }
 
   register(user: User) {
-    return this.http.post(apiUrl + "/user/signup", user);
+    return this.http.post(apiUrl + "/user/signup", user, {
+      responseType: "text"
+    });
   }
 
   login(userEmail: string, userPassword: string) {
@@ -38,24 +40,31 @@ export class UserService {
   }
 
   getCurrentUser() {
-    return this.currentUser;
+    return JSON.parse(localStorage.getItem("currentUser"));
   }
 
   setCurrentUser(user: User) {
     console.log("Current user data: \n");
     console.log(user);
     this.currentUser = user;
+    localStorage.setItem("currentUser", JSON.stringify(this.currentUser));
+    console.log(JSON.parse(localStorage.getItem("currentUser")));
     console.log(this.currentUser);
   }
 
   updateRole(user: User, role: string) {
     return this.http.put(
       apiUrl + "/user/update/role/" + user.id + "/" + role,
-      {}
+      {},
+      {
+        responseType: "text"
+      }
     );
   }
 
   removeUser(user: User) {
-    return this.http.delete(apiUrl + "/user/delete/" + user.id, {});
+    return this.http.delete(apiUrl + "/user/delete/" + user.id, {
+      responseType: "text"
+    });
   }
 }

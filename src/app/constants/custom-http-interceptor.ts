@@ -24,10 +24,10 @@ export class CustomHttpInterceptor implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Promise<HttpEvent<any>> {
-    const token = await this.authService.token;
+    var token = await this.authService.getToken();
     let changedRequest = request;
     // HttpHeader object immutable - copy values
-    const headerSettings: { [name: string]: string | string[] } = {};
+    const headerSettings: any = {};
 
     for (const key of request.headers.keys()) {
       headerSettings[key] = request.headers.getAll(key);
@@ -35,7 +35,9 @@ export class CustomHttpInterceptor implements HttpInterceptor {
     if (token) {
       headerSettings["Authorization"] = token;
     }
+    console.log(token);
     headerSettings["Content-Type"] = "application/json";
+    console.log(headerSettings);
     const newHeader = new HttpHeaders(headerSettings);
 
     changedRequest = request.clone({

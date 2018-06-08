@@ -4,6 +4,8 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { AuthService } from "../../services/auth.service";
 import { UserService } from "../../services/user.service";
 import { User } from "../../models/user";
+import { Router } from "@angular/router";
+import { AlertService } from "../../services/alert.service";
 
 @Component({
   selector: "app-login",
@@ -13,7 +15,9 @@ import { User } from "../../models/user";
 export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router,
+    private alertService: AlertService
   ) {}
 
   loginForm = new FormGroup({
@@ -30,10 +34,12 @@ export class LoginComponent implements OnInit {
     this.authService.login(userEmail, userPassword).subscribe(
       (response: any) => {
         console.log(response.headers.get("Authorization"));
-        this.authService.token = response.headers.get("Authorization");
+        this.authService.setToken(response.headers.get("Authorization"));
         this.userService.setCurrentUser(response.body);
+        this.router.navigate([""]);
       },
       error => {
+        this.alertService.error("Podano niepoprawne dane.Spróbuj jeszcze raz.");
         console.log(error);
       }
     );

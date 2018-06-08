@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { Book } from "../../models/book";
 import { MatPaginator, MatTableDataSource } from "@angular/material";
 import { BookService } from "../../services/book.service";
+import { AlertService } from "../../services/alert.service";
 
 @Component({
   selector: "app-edit-book",
@@ -9,9 +10,12 @@ import { BookService } from "../../services/book.service";
   styleUrls: ["./edit-book.component.css"]
 })
 export class EditBookComponent implements OnInit {
-  constructor(private bookService: BookService) {}
+  constructor(
+    private bookService: BookService,
+    private alertService: AlertService
+  ) {}
 
-  books: Book[] = ELEMENT_DATA;
+  books: Book[];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   displayedColumns = [
@@ -48,6 +52,7 @@ export class EditBookComponent implements OnInit {
     this.bookService.updateBook(book).subscribe(
       (response: any) => {
         console.log(response);
+        this.alertService.success("Zaktualizowano liczbę egzemplarzy");
       },
       error => {
         console.log(error);
@@ -71,6 +76,7 @@ export class EditBookComponent implements OnInit {
       (response: any) => {
         console.log(response);
         this.removeBookWithISBN(book.isbn);
+        this.alertService.success("Usunięto tytuł: " + book.title);
       },
       error => {
         console.log(error);

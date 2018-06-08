@@ -1,10 +1,11 @@
 <div class="jumbotron">
   <div class="container">
-    <h1>Witaj w bibliotece </h1>
-    <p>Już teraz przekonaj się jak proste i przyjemne może być wypożyczanie książek. Wystarczy, że utworzysz konto i zarezerwujesz
-      wybrany tytuł.</p>
+    <h1>{{h1Text}}</h1>
     <p>
-      <a class="btn btn-primary btn-lg" routerLink="register" role="button">Zarejestruj się &raquo;</a>
+      <ng-content></ng-content>
+    </p>
+    <p>
+      <a *ngIf="!isAuthenticated()" class="btn btn-primary btn-lg" routerLink="/register" role="button">Zarejestruj się &raquo;</a>
     </p>
   </div>
 </div>
