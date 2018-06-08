@@ -16,8 +16,10 @@ export class ReservationsListComponent implements OnInit {
   displayedColumns = [
     "reservationId",
     "title",
-    "isbn",
     "userId",
+    "userFirstname",
+    "userLastname",
+    "userEmail",
     "realiseButton"
   ];
   dataSource = new MatTableDataSource(this.reservations);
