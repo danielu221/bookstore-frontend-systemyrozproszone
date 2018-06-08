@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { BookService } from "../../services/book.service";
 import { Book } from "../../models/book";
+import { AlertService } from "../../services/alert.service";
 
 @Component({
   selector: "app-add-book",
@@ -8,7 +9,10 @@ import { Book } from "../../models/book";
   styleUrls: ["./add-book.component.css"]
 })
 export class AddBookComponent implements OnInit {
-  constructor(private bookService: BookService) {}
+  constructor(
+    private bookService: BookService,
+    private alertService: AlertService
+  ) {}
   book: Book = {
     isbn: "",
     title: "",
@@ -27,6 +31,7 @@ export class AddBookComponent implements OnInit {
         // this.alertService.success('Registration successful', true);
         // this.router.navigate(['/login']);
         console.log(data);
+        this.alertService.success("Dodano nową ksiązkę");
       },
       error => {
         // this.alertService.error(error);

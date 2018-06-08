@@ -13,7 +13,9 @@ export class BookService {
   }
 
   addBook(book: Book) {
-    return this.http.post(apiUrl + "/book/create", book);
+    return this.http.post(apiUrl + "/book/create", book, {
+      responseType: "text"
+    });
   }
 
   reserveBook(userId: number, isbn: string) {
@@ -28,7 +30,9 @@ export class BookService {
   }
 
   removeBook(book: Book) {
-    return this.http.delete(apiUrl + "/book/delete/" + book.isbn, {});
+    return this.http.delete(apiUrl + "/book/delete/" + book.isbn, {
+      responseType: "text"
+    });
   }
   //   getById(id: number) {
   //     return this.http.get("/api/user/");
