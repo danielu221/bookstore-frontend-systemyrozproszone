@@ -19,7 +19,13 @@ export class RentStoryComponent implements OnInit {
   rents: any[];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  displayedColumns = ["borrowDate", "borrowReturnDate", "status", "fee"];
+  displayedColumns = [
+    "title",
+    "author",
+    "borrowDate",
+    "borrowReturnDate",
+    "fee"
+  ];
   dataSource = new MatTableDataSource(this.rents);
 
   ngOnInit() {

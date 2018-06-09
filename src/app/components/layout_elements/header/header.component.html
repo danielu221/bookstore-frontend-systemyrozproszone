@@ -25,13 +25,13 @@
           <a routerLink="addBook" *ngIf="getUserRole()=='ADMINISTRATOR'">Dodaj książkę</a>
         </li>
         <li routerLinkActive="active">
-          <a routerLink="editBook" *ngIf="getUserRole()=='ADMINISTRATOR'">Edytuj książkę</a>
+          <a routerLink="editBook" *ngIf="getUserRole()=='ADMINISTRATOR' || getUserRole()=='LIBRARY_EMPLOYEE' ">Edytuj książkę</a>
         </li>
         <li routerLinkActive="active">
           <a routerLink="editUser" *ngIf="getUserRole()=='ADMINISTRATOR'">Edytuj użytkownika</a>
         </li>
         <li routerLinkActive="active">
-          <a routerLink="reservationsList" *ngIf="getUserRole()=='ADMINISTRATOR'">Rezerwacje</a>
+          <a routerLink="reservationsList" *ngIf="getUserRole()=='ADMINISTRATOR'  || getUserRole()=='LIBRARY_EMPLOYEE'">Rezerwacje</a>
         </li>
         <li routerLinkActive="active">
           <a routerLink="rentStory" *ngIf="getUserRole()=='USER'">Historia wypożyczeń</a>

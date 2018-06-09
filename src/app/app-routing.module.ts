@@ -22,7 +22,7 @@ const routes: Routes = [
     component: AddBookComponent,
     canActivate: [RoleGuardService],
     data: {
-      expectedRole: "ADMINISTRATOR"
+      expectedRole: ["ADMINISTRATOR"]
     }
   },
   {
@@ -30,7 +30,7 @@ const routes: Routes = [
     component: EditBookComponent,
     canActivate: [RoleGuardService],
     data: {
-      expectedRole: "ADMINISTRATOR"
+      expectedRole: ["ADMINISTRATOR", "LIBRARY_EMPLOYEE"]
     }
   },
   {
@@ -38,7 +38,7 @@ const routes: Routes = [
     component: EditUserComponent,
     canActivate: [RoleGuardService],
     data: {
-      expectedRole: "ADMINISTRATOR"
+      expectedRole: ["ADMINISTRATOR"]
     }
   },
   {
@@ -46,7 +46,7 @@ const routes: Routes = [
     component: ReservationsListComponent,
     canActivate: [RoleGuardService],
     data: {
-      expectedRole: "ADMINISTRATOR"
+      expectedRole: ["ADMINISTRATOR", "LIBRARY_EMPLOYEE"]
     }
   },
   {
@@ -54,7 +54,7 @@ const routes: Routes = [
     component: RentStoryComponent,
     canActivate: [RoleGuardService],
     data: {
-      expectedRole: "USER"
+      expectedRole: ["USER"]
     }
   },
   {
@@ -62,7 +62,7 @@ const routes: Routes = [
     component: BooksListComponent,
     canActivate: [RoleGuardService],
     data: {
-      expectedRole: "USER"
+      expectedRole: ["USER"]
     }
   }
 ];

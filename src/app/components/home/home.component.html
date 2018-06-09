@@ -32,7 +32,7 @@
         </div>
     </div>
     <div *ngIf="getUserRole()=='LIBRARY_EMPLOYEE'">
-        <app-jumbotron [h1Text]="'Witaj'">Z tego miejsca mo</app-jumbotron>
+        <app-jumbotron [h1Text]="'Witaj w panelu pracownika'">Z tego miejsca możesz dokonać wypożyczenia ksiązek i ich edycji.</app-jumbotron>
         <div class="container">
             <div class="row">
                 <div class="col-md-4 text-center heading-margin" *ngFor="let heading of headings">
