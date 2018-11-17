@@ -31,7 +31,7 @@
           <a routerLink="editUser" *ngIf="getUserRole()=='ADMINISTRATOR'">Edytuj użytkownika</a>
         </li>
         <li routerLinkActive="active">
-          <a routerLink="reservationsList" *ngIf="getUserRole()=='ADMINISTRATOR'  || getUserRole()=='LIBRARY_EMPLOYEE'">Rezerwacje</a>
+          <a routerLink="reservationsList" *ngIf="getUserRole()=='ADMINISTRATOR'  || getUserRole()=='LIBRARY_EMPLOYEE'">Zamówienia</a>
         </li>
         <li routerLinkActive="active">
           <a routerLink="rentStory" *ngIf="getUserRole()=='USER'">Historia wypożyczeń</a>

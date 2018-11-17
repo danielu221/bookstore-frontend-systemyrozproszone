@@ -48,6 +48,6 @@ export class HomeComponent implements OnInit {
   }
 
   getUserRole() {
-    return this.userService.getCurrentUser().role;
+    return this.userService.getCurrentUserRolename();
   }
 }

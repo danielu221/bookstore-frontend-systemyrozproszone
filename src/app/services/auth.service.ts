@@ -24,9 +24,8 @@ export class AuthService {
   }
 
   isAuthenticated() {
-    var currentUser = this.userService.getCurrentUser();
-    //console.log(Object.keys(currentUser).length != 0);
-    return currentUser != null;
+    const currentUser = this.userService.getCurrentUser();
+    return currentUser !== null && currentUser !== undefined ;
   }
 
   setToken(token: string) {

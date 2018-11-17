@@ -19,8 +19,7 @@
       <th mat-header-cell *matHeaderCellDef> Rola </th>
       <td mat-cell *matCellDef="let user">
         <mat-form-field>
-          <mat-select #roleSelection [(value)]="user.role" (selectionChange)="onRoleSelectionChange(user,roleSelection.value)">
-            <mat-option value="LIBRARY_EMPLOYEE">Pracownik biblioteki</mat-option>
+          <mat-select #roleSelection [(value)]="user.role.rolename" (selectionChange)="onRoleSelectionChange(user,roleSelection.value)">
             <mat-option value="ADMINISTRATOR">Administrator</mat-option>
             <mat-option value="USER">Użytkownik</mat-option>
           </mat-select>

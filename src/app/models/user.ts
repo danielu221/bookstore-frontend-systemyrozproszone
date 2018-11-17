@@ -1,3 +1,5 @@
+import { Role } from "./role";
+
 export class User {
   id: number;
   firstname: string;
@@ -9,5 +11,5 @@ export class User {
   houseNumber?: number;
   apartmentNumber?: number;
   dateOfBirth?: Date;
-  role: string;
+  role: Role;
 }

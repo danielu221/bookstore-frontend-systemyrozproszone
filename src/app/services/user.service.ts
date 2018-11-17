@@ -8,15 +8,9 @@ import { apiUrl } from "../constants/api";
 export class UserService {
   constructor(private http: HttpClient) {}
 
-  currentUser: User;
-
   getAll() {
-    return this.http.get(apiUrl + "/user/all");
+    return this.http.get(apiUrl + "/user");
   }
-
-  //   getById(id: number) {
-  //     return this.http.get("/api/user/");
-  //   }
 
   register(user: User) {
     return this.http.post(apiUrl + "/user/signup", user, {
@@ -44,17 +38,21 @@ export class UserService {
   }
 
   setCurrentUser(user: User) {
-    console.log("Current user data: \n");
-    console.log(user);
-    this.currentUser = user;
-    localStorage.setItem("currentUser", JSON.stringify(this.currentUser));
-    console.log(JSON.parse(localStorage.getItem("currentUser")));
-    console.log(this.currentUser);
+    localStorage.setItem("currentUser", JSON.stringify(user));
   }
 
-  updateRole(user: User, role: string) {
+  getCurrentUserRolename(){
+    const currentUser = this.getCurrentUser();
+    if (currentUser) {
+      return currentUser.role.rolename;
+    } else {
+      return null;
+    }
+  }
+
+  updateRole(user: User, rolename: string) {
     return this.http.put(
-      apiUrl + "/user/update/role/" + user.id + "/" + role,
+      apiUrl + "/user/role/" + user.id + "/" + rolename,
       {},
       {
         responseType: "text"

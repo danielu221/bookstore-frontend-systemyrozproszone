@@ -42,7 +42,7 @@ export class EditUserComponent implements OnInit {
   }
 
   removeUserWithId(id: number) {
-    var removeIndex = this.users
+    const removeIndex = this.users
       .map(function(user) {
         return user.id;
       })
@@ -78,33 +78,3 @@ export class EditUserComponent implements OnInit {
     );
   }
 }
-// const ELEMENT_DATA: User[] = [
-//   {
-//     id: 1,
-//     firstname: "Arkadiusz",
-//     lastname: "Gotfryd",
-//     email: "arkadiusz@library.com",
-//     role: "LIBRARY_EMPLOYEE"
-//   },
-//   {
-//     id: 2,
-//     firstname: "Mateusz",
-//     lastname: "Danieluk",
-//     email: "mateusz@library.com",
-//     role: "USER"
-//   },
-//   {
-//     id: 3,
-//     firstname: "Administrator",
-//     lastname: "Administrator",
-//     email: "administrator@library.com",
-//     role: "ADMINISTRATOR"
-//   },
-//   {
-//     id: 510,
-//     firstname: "Testowy",
-//     lastname: "Testy",
-//     email: "testtest@wp.pl",
-//     role: "USER"
-//   }
-// ];

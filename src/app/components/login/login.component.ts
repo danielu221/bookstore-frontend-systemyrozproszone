@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     console.log(userEmail, userPassword);
     this.authService.login(userEmail, userPassword).subscribe(
       (response: any) => {
-        console.log(response.headers.get("Authorization"));
+        console.log(response.body);
         this.authService.setToken(response.headers.get("Authorization"));
         this.userService.setCurrentUser(response.body);
         this.router.navigate([""]);

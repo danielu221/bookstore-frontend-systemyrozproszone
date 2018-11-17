@@ -16,9 +16,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {}
 
   getUserRole() {
-    var currentUser = this.userService.getCurrentUser();
+    const currentUser = this.userService.getCurrentUser();
     if (currentUser) {
-      this.userRole = currentUser.role;
+      this.userRole = currentUser.role.rolename;
       return this.userRole;
     } else {
       return "";

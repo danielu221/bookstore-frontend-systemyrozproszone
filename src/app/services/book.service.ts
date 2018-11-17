@@ -9,7 +9,7 @@ export class BookService {
   constructor(private http: HttpClient) {}
 
   getAll() {
-    return this.http.get(apiUrl + "/book/all");
+    return this.http.get(apiUrl + "/book");
   }
 
   addBook(book: Book) {
