@@ -13,7 +13,7 @@ export class BookService {
   }
 
   addBook(book: Book) {
-    return this.http.post(apiUrl + "/book/create", book, {
+    return this.http.post(apiUrl + "/book", book, {
       responseType: "text"
     });
   }
@@ -26,15 +26,12 @@ export class BookService {
   }
 
   updateBook(book: Book) {
-    return this.http.put(apiUrl + "/book/update/" + book.isbn, book);
+    return this.http.put(apiUrl + "/book/" + book.id, book);
   }
 
   removeBook(book: Book) {
-    return this.http.delete(apiUrl + "/book/delete/" + book.isbn, {
+    return this.http.delete(apiUrl + "/book/" + book.id, {
       responseType: "text"
     });
   }
-  //   getById(id: number) {
-  //     return this.http.get("/api/user/");
-  //   }
 }

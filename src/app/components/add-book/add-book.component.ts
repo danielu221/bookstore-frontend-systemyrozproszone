@@ -14,17 +14,17 @@ export class AddBookComponent implements OnInit {
     private alertService: AlertService
   ) {}
   book: Book = {
-    isbn: "",
+    id: "",
     title: "",
     author: "",
     dateOfRelease: 0,
-    numberOfCopies: 1,
-    availableCopies: 1
+    availableCopies: 1,
+    unitPrice: 0
   };
 
   ngOnInit() {}
   onAddClick() {
-    this.book.availableCopies = this.book.numberOfCopies;
+    // this.book.availableCopies = this.book.availableCopies;
     this.bookService.addBook(this.book).subscribe(
       data => {
         // set success message and pass true paramater to persist the message after redirecting to the login page

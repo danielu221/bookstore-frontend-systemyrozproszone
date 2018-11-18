@@ -1,10 +1,11 @@
 export class Book {
-  isbn: string;
+  id: string;
   title: string;
   author: string;
   dateOfRelease: number;
-  numberOfCopies: number;
   availableCopies: number;
+  unitPrice: number;
+  isbn?: string;
   isReserved?: boolean;
   reservationId?: number;
 }

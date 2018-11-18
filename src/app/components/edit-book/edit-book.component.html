@@ -7,7 +7,7 @@
 
     <ng-container matColumnDef="isbn">
       <th mat-header-cell *matHeaderCellDef> No. </th>
-      <td mat-cell *matCellDef="let book"> {{book.isbn}} </td>
+      <td mat-cell *matCellDef="let book"> {{book.id}} </td>
     </ng-container>
 
     <ng-container matColumnDef="title">
@@ -23,7 +23,7 @@
     <ng-container matColumnDef="numberOfCopies">
       <th mat-header-cell *matHeaderCellDef> Liczba egzemplarzy </th>
       <td mat-cell *matCellDef="let book">
-        <input class="col-md-4" type="number" [(ngModel)]="book.numberOfCopies" min="1">
+        <input class="col-md-4" type="number" [(ngModel)]="book.availableCopies" min="1">
         <button type="button" class="btn btn-success " (click)="onAddClick(book)">Aktualizuj</button>
       </td>
     </ng-container>
