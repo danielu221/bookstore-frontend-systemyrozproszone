@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Liczba egzemplarzy</h1>
+<div mat-dialog-content>
+  <p>Podaj liczbe egzemplarzy?</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="numOfCopies">
+  </mat-form-field>
+  <mat-label>
+      <label class="errorMessage" *ngIf="errorMessage !== ''">{{errorMessage}}</label>
+    </mat-label>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Anuluj</button>
+  <!-- <button mat-button (click)="onClick()" [mat-dialog-close]="numOfCopies" cdkFocusInitial>Ok</button> -->
+  <button mat-button (click)="onClick()" cdkFocusInitial>Ok</button>
+</div>

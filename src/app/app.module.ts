@@ -19,7 +19,8 @@ import {
   MatPaginatorModule,
   MatPaginatorIntl,
   MatDialogModule,
-  MatSelectModule
+  MatSelectModule,
+  MatButtonModule
 } from "@angular/material";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule } from "@angular/forms";
@@ -41,6 +42,10 @@ import { ReservationService } from "./services/reservation.service";
 import { AlertComponent } from "./components/alert/alert.component";
 import { AlertService } from "./services/alert.service";
 import { RentService } from "./services/rent.service";
+import { DialogComponent } from './components/dialog/dialog.component';
+import { BasketComponent } from './components/basket/basket.component';
+import { OrderHistoryComponent } from './components/order-history/order-history.component';
+import { OrderHistoryDetailsComponent } from './components/order-history-details/order-history-details.component';
 
 @NgModule({
   declarations: [
@@ -57,8 +62,13 @@ import { RentService } from "./services/rent.service";
     EditBookComponent,
     EditUserComponent,
     RentStoryComponent,
-    AlertComponent
+    AlertComponent,
+    DialogComponent,
+    BasketComponent,
+    OrderHistoryComponent,
+    OrderHistoryDetailsComponent
   ],
+  entryComponents: [DialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -73,7 +83,8 @@ import { RentService } from "./services/rent.service";
     ReactiveFormsModule,
     MatPaginatorModule,
     MatDialogModule,
-    MatSelectModule
+    MatSelectModule,
+    MatButtonModule
   ],
   providers: [
     UserService,

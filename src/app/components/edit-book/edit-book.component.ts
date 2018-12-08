@@ -60,27 +60,27 @@ export class EditBookComponent implements OnInit {
     );
   }
 
-  removeBookWithISBN(isbn: string) {
-    const removeIndex = this.books
-      .map(function(book) {
-        return book.isbn;
-      })
-      .indexOf(isbn);
-    this.books.splice(removeIndex, 1);
-    this.dataSource.data = this.books;
-  }
+  // removeBookWithISBN(isbn: string) {
+  //   const removeIndex = this.books
+  //     .map(function(book) {
+  //       return book.isbn;
+  //     })
+  //     .indexOf(isbn);
+  //   this.books.splice(removeIndex, 1);
+  //   this.dataSource.data = this.books;
+  // }
 
-  onRemoveClick(book: any) {
-    console.log(book);
-    this.bookService.removeBook(book).subscribe(
-      (response: any) => {
-        console.log(response);
-        this.removeBookWithISBN(book.isbn);
-        this.alertService.success("Usunięto tytuł: " + book.title);
-      },
-      error => {
-        console.log(error);
-      }
-    );
-  }
+  // onRemoveClick(book: any) {
+  //   console.log(book);
+  //   this.bookService.removeBook(book).subscribe(
+  //     (response: any) => {
+  //       console.log(response);
+  //       this.removeBookWithISBN(book.isbn);
+  //       this.alertService.success("Usunięto tytuł: " + book.title);
+  //     },
+  //     error => {
+  //       console.log(error);
+  //     }
+  //   );
+  // }
 }

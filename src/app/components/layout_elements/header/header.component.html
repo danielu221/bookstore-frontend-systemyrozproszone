@@ -19,7 +19,7 @@
           <a routerLink="login" *ngIf="getUserRole()==''">Login</a>
         </li>
         <li routerLinkActive="active">
-          <a routerLink="booksList" *ngIf="getUserRole()=='USER'">Wyszukaj książki</a>
+          <a routerLink="booksList" *ngIf="getUserRole()=='USER'">Wyszukaj książki dostępne u nas</a>
         </li>
         <li routerLinkActive="active">
           <a routerLink="addBook" *ngIf="getUserRole()=='ADMINISTRATOR'">Dodaj książkę</a>
@@ -34,7 +34,10 @@
           <a routerLink="reservationsList" *ngIf="getUserRole()=='ADMINISTRATOR'  || getUserRole()=='LIBRARY_EMPLOYEE'">Zamówienia</a>
         </li>
         <li routerLinkActive="active">
-          <a routerLink="rentStory" *ngIf="getUserRole()=='USER'">Historia wypożyczeń</a>
+          <a routerLink="orderHistory" *ngIf="getUserRole()=='USER'">Historia zamówień</a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="basket" *ngIf="getUserRole()=='USER'">Koszyk</a>
         </li>
         <li routerLinkActive="active">
           <a routerLink="logout" *ngIf="isAuthenticated()" (click)="logout()">Wyloguj</a>

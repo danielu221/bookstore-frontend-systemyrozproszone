@@ -11,6 +11,9 @@ import { EditBookComponent } from "./components/edit-book/edit-book.component";
 import { EditUserComponent } from "./components/edit-user/edit-user.component";
 import { ReservationsListComponent } from "./components/reservations-list/reservations-list.component";
 import { RentStoryComponent } from "./components/rent-story/rent-story.component";
+import { BasketComponent } from "./components/basket/basket.component";
+import {OrderHistoryComponent} from "./components/order-history/order-history.component";
+import {OrderHistoryDetailsComponent} from "./components/order-history-details/order-history-details.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -49,9 +52,25 @@ const routes: Routes = [
       expectedRole: ["ADMINISTRATOR", "LIBRARY_EMPLOYEE"]
     }
   },
+  // {
+  //   path: "rentStory",
+  //   component: RentStoryComponent,
+  //   canActivate: [RoleGuardService],
+  //   data: {
+  //     expectedRole: ["USER"]
+  //   }
+  // },
   {
-    path: "rentStory",
-    component: RentStoryComponent,
+    path: "orderHistory",
+    component: OrderHistoryComponent,
+    canActivate: [RoleGuardService],
+    data: {
+      expectedRole: ["USER"]
+    }
+  },
+  {
+    path: "orderHistoryDetails/:id",
+    component: OrderHistoryDetailsComponent,
     canActivate: [RoleGuardService],
     data: {
       expectedRole: ["USER"]
@@ -60,6 +79,14 @@ const routes: Routes = [
   {
     path: "booksList",
     component: BooksListComponent,
+    canActivate: [RoleGuardService],
+    data: {
+      expectedRole: ["USER"]
+    }
+  },
+  {
+    path: "basket",
+    component: BasketComponent,
     canActivate: [RoleGuardService],
     data: {
       expectedRole: ["USER"]

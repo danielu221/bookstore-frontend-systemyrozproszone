@@ -5,7 +5,4 @@ export class Book {
   dateOfRelease: number;
   availableCopies: number;
   unitPrice: number;
-  isbn?: string;
-  isReserved?: boolean;
-  reservationId?: number;
 }

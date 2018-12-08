@@ -1,0 +1,37 @@
+<div class="container after-header">
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 text-center">
+
+    <ng-container matColumnDef="orderId">
+      <th mat-header-cell *matHeaderCellDef> Identyfikator zamówienia </th>
+      <td mat-cell *matCellDef="let historyItem"> {{historyItem.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="orderDate">
+      <th mat-header-cell *matHeaderCellDef> Data złożenia zamówienia</th>
+      <td mat-cell *matCellDef="let historyItem"> {{historyItem.orderDate | date}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="totalPrice">
+      <th mat-header-cell *matHeaderCellDef> Całkowity koszt </th>
+      <td mat-cell *matCellDef="let historyItem"> {{historyItem.totalPrice}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="orderStatus">
+      <th mat-header-cell *matHeaderCellDef> Status zamówienia </th>
+      <td mat-cell *matCellDef="let historyItem"> W realizacji </td>
+    </ng-container>
+
+    <ng-container matColumnDef="details">
+      <th mat-header-cell *matHeaderCellDef> Szczegóły </th>
+      <td mat-cell *matCellDef="let historyItem">
+        <button type="button" [routerLink]="['/orderHistoryDetails', historyItem.id]" class="btn btn-primary" >Więcej</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>

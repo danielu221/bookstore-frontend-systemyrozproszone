@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 import { apiUrl } from "../constants/api";
 import { Book } from "../models/book";
+import { Observable } from "rxjs";
 
 @Injectable()
 export class BookService {
@@ -10,6 +11,11 @@ export class BookService {
 
   getAll() {
     return this.http.get(apiUrl + "/book");
+  }
+
+  getSingle(id:string) {
+    let endpoint = `/book/${id}`
+    return this.http.get(apiUrl + endpoint);
   }
 
   addBook(book: Book) {

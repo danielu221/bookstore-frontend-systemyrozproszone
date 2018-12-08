@@ -1,0 +1,35 @@
+<div class="container after-header">
+  
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 text-center">
+  
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef> Tytuł </th>
+        <td mat-cell *matCellDef="let historyItemOrderDetail"> {{historyItemOrderDetail.book.title}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="author">
+        <th mat-header-cell *matHeaderCellDef> Autor </th>
+        <td mat-cell *matCellDef="let historyItemOrderDetail"> {{historyItemOrderDetail.book.author}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="numOfCopies">
+        <th mat-header-cell *matHeaderCellDef> Liczba kopii </th>
+        <td mat-cell *matCellDef="let historyItemOrderDetail"> {{historyItemOrderDetail.units | number}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="unitPrice">
+        <th mat-header-cell *matHeaderCellDef> Cena jednostkowa </th>
+        <td mat-cell *matCellDef="let historyItemOrderDetail"> {{historyItemOrderDetail.book.unitPrice}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="totalPrice">
+        <th mat-header-cell *matHeaderCellDef> Cena całkowita</th>
+        <td mat-cell *matCellDef="let historyItemOrderDetail"> {{historyItemOrderDetail.totalPrice}} </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
