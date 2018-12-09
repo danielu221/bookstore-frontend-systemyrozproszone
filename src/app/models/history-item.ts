@@ -5,5 +5,6 @@ export class HistoryItem {
     userId: number;
     orderDate: string;
     totalPrice: number;
+    status:string;
     orderDetails: HistoryItemDetail[];
 }

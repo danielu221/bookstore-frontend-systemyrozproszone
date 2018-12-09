@@ -1,0 +1,12 @@
+<div class="container after-header">
+
+    <div class="container-row">
+          <mat-form-field>
+              <input [(ngModel)]="searchPhrase" (keyup)="onKey($event)" matInput placeholder="Nazwa ksiazki" />
+          </mat-form-field>
+          <button type="button" (click)="searchInGoogleBooks()" class="search-button btn btn-primary" mat-button>Szukaj</button>
+    </div>
+    
+    <app-table-with-pagination *ngIf="dataSource.data.length > 0" [dataSource]="dataSource" ></app-table-with-pagination>
+  </div>
+  

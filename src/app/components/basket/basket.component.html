@@ -1,9 +1,11 @@
 <div class="container after-header">
-  <mat-form-field>
+    <h2 *ngIf="orderItems.length === 0">Aktualnie brak pozycji w koszyku</h2>
+
+  <mat-form-field *ngIf="orderItems.length > 0">
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Szukaj">
   </mat-form-field>
 
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 text-center">
+  <table *ngIf="orderItems.length > 0" mat-table [dataSource]="dataSource" class="mat-elevation-z8 text-center">
 
     <ng-container matColumnDef="title">
       <th mat-header-cell *matHeaderCellDef> Tytuł </th>
@@ -41,6 +43,6 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  <mat-paginator *ngIf="orderItems.length > 0" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   <button *ngIf="orderItems.length > 0" class="btn btn-primary" (click)="placeTheOrder()">Zrealizuj zamówienie</button>
 </div>

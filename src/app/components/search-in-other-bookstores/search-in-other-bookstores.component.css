@@ -1,0 +1,39 @@
+table {
+  width: 100%;
+}
+
+td {
+  width: 25%;
+}
+
+.mat-cell {
+  padding: 20px;
+}
+.mat-header-cell {
+  text-align: center;
+  background-color: #d4d4d4;
+  font-size: 14px;
+}
+
+.container {
+  margin-top: 100px;
+}
+
+.container-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-row .mat-form-field {
+  width: 500px;
+}
+
+ul {
+  list-style: none;
+}
+
+.search-button {
+  margin-top: -12px;
+  margin-left: 5px;
+}

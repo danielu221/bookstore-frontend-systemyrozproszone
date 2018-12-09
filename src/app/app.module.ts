@@ -37,7 +37,6 @@ import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { CustomHttpInterceptor } from "./constants/custom-http-interceptor";
 import { EditBookComponent } from "./components/edit-book/edit-book.component";
 import { EditUserComponent } from "./components/edit-user/edit-user.component";
-import { RentStoryComponent } from "./components/rent-story/rent-story.component";
 import { ReservationService } from "./services/reservation.service";
 import { AlertComponent } from "./components/alert/alert.component";
 import { AlertService } from "./services/alert.service";
@@ -46,6 +45,8 @@ import { DialogComponent } from './components/dialog/dialog.component';
 import { BasketComponent } from './components/basket/basket.component';
 import { OrderHistoryComponent } from './components/order-history/order-history.component';
 import { OrderHistoryDetailsComponent } from './components/order-history-details/order-history-details.component';
+import { SearchInOtherBookstoresComponent } from './components/search-in-other-bookstores/search-in-other-bookstores.component';
+import { TableWithPaginationComponent } from './components/table-with-pagination/table-with-pagination.component';
 
 @NgModule({
   declarations: [
@@ -61,12 +62,13 @@ import { OrderHistoryDetailsComponent } from './components/order-history-details
     AddBookComponent,
     EditBookComponent,
     EditUserComponent,
-    RentStoryComponent,
     AlertComponent,
     DialogComponent,
     BasketComponent,
     OrderHistoryComponent,
-    OrderHistoryDetailsComponent
+    OrderHistoryDetailsComponent,
+    SearchInOtherBookstoresComponent,
+    TableWithPaginationComponent,
   ],
   entryComponents: [DialogComponent],
   imports: [

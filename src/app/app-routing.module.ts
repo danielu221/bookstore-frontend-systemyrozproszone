@@ -9,8 +9,7 @@ import { RoleGuardService } from "./services/role-guard.service";
 import { AddBookComponent } from "./components/add-book/add-book.component";
 import { EditBookComponent } from "./components/edit-book/edit-book.component";
 import { EditUserComponent } from "./components/edit-user/edit-user.component";
-import { ReservationsListComponent } from "./components/reservations-list/reservations-list.component";
-import { RentStoryComponent } from "./components/rent-story/rent-story.component";
+import {SearchInOtherBookstoresComponent} from "./components/search-in-other-bookstores/search-in-other-bookstores.component";
 import { BasketComponent } from "./components/basket/basket.component";
 import {OrderHistoryComponent} from "./components/order-history/order-history.component";
 import {OrderHistoryDetailsComponent} from "./components/order-history-details/order-history-details.component";
@@ -33,7 +32,7 @@ const routes: Routes = [
     component: EditBookComponent,
     canActivate: [RoleGuardService],
     data: {
-      expectedRole: ["ADMINISTRATOR", "LIBRARY_EMPLOYEE"]
+      expectedRole: ["ADMINISTRATOR"]
     }
   },
   {
@@ -45,21 +44,21 @@ const routes: Routes = [
     }
   },
   {
-    path: "reservationsList",
-    component: ReservationsListComponent,
+    path: "orderHistoryAll",
+    component: OrderHistoryComponent,
     canActivate: [RoleGuardService],
     data: {
-      expectedRole: ["ADMINISTRATOR", "LIBRARY_EMPLOYEE"]
+      expectedRole: ["ADMINISTRATOR"]
     }
   },
-  // {
-  //   path: "rentStory",
-  //   component: RentStoryComponent,
-  //   canActivate: [RoleGuardService],
-  //   data: {
-  //     expectedRole: ["USER"]
-  //   }
-  // },
+  {
+    path: "searchInOtherBookstores",
+    component: SearchInOtherBookstoresComponent,
+    canActivate: [RoleGuardService],
+    data: {
+      expectedRole: ["USER"]
+    }
+  },
   {
     path: "orderHistory",
     component: OrderHistoryComponent,
@@ -73,7 +72,7 @@ const routes: Routes = [
     component: OrderHistoryDetailsComponent,
     canActivate: [RoleGuardService],
     data: {
-      expectedRole: ["USER"]
+      expectedRole: ["USER","ADMINISTRATOR"]
     }
   },
   {

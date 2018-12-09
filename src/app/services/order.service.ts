@@ -1,11 +1,11 @@
 import { Injectable } from "@angular/core";
 import { OrderItem } from "../models/order-item";
-import { BookService } from "../services/book.service";
 import { Book } from "../models/book";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient} from "@angular/common/http";
 import { apiUrl } from "../constants/api";
 import { Observable } from "rxjs";
 import { HistoryItem } from "../models/history-item";
+import {UserService} from '../services/user.service';
 
 @Injectable({
   providedIn: "root"
@@ -17,7 +17,7 @@ export class OrderService {
   orderHistory: HistoryItem[] = [];
   orderItemSubscription;
 
-  constructor(private bookService: BookService, private http: HttpClient) {
+  constructor(private userService:UserService,private http: HttpClient) {
     this.items = this.getOrderItemsFromLocalStorage();
   }
 
@@ -31,7 +31,8 @@ export class OrderService {
       let existingItem = this.items[index];
       existingItem.numOfCopies = existingItem.numOfCopies + item.numOfCopies;
     }
-    localStorage.setItem("basketItems", JSON.stringify(this.items));
+    let currentUser = this.userService.getCurrentUser();
+    localStorage.setItem(`${currentUser.email}basketItems`, JSON.stringify(this.items));
   };
 
   removeItemFromOrder = (item: OrderItem) => {
@@ -39,11 +40,12 @@ export class OrderService {
       return orderItem.book.id === item.book.id;
     });
     if (index !== -1) this.items.splice(index, 1);
-    localStorage.setItem("basketItems", JSON.stringify(this.items));
+    let currentUser = this.userService.getCurrentUser();
+    localStorage.setItem(`${currentUser.email}basketItems`, JSON.stringify(this.items));
   };
 
   getAllOrderItems = () => {
-    return this.items;
+    return this.getOrderItemsFromLocalStorage();
   };
 
   getSingleItem = (book: Book) => {
@@ -54,12 +56,14 @@ export class OrderService {
 
   clearBasket = () => {
     this.items = [];
-    localStorage.setItem("basketItems", JSON.stringify(this.items));
+    let currentUser = this.userService.getCurrentUser();
+    localStorage.setItem(`${currentUser.email}basketItems`, JSON.stringify(this.items));
   };
 
   getOrderItemsFromLocalStorage = () => {
-    if (localStorage.getItem("basketItems") !== null) {
-      return JSON.parse(localStorage.getItem("basketItems"));
+    let currentUser = this.userService.getCurrentUser();
+    if (localStorage.getItem(`${currentUser.email}basketItems`) !== null) {
+      return JSON.parse(localStorage.getItem(`${currentUser.email}basketItems`));
     }
     return [];
   };
@@ -75,7 +79,17 @@ export class OrderService {
       .get<HistoryItem[]>(apiUrl + "/order/user")
       .pipe((observableResponse: Observable<HistoryItem[]>) => {
         observableResponse.subscribe(orderHistory => {
-          console.log(orderHistory);
+          this.orderHistory = orderHistory;
+        });
+        return observableResponse;
+      });
+  };
+
+  getAllOrderHistory = () => {
+    return this.http
+      .get<HistoryItem[]>(apiUrl + "/order")
+      .pipe((observableResponse: Observable<HistoryItem[]>) => {
+        observableResponse.subscribe(orderHistory => {
           this.orderHistory = orderHistory;
         });
         return observableResponse;
@@ -87,4 +101,15 @@ export class OrderService {
       return orderHistoryItem.id === id;
     })
   };
+
+  updateOrderStatus = (id:number,status:string) => {
+    let requestBody = {};
+    requestBody['orderId'] = id;
+    requestBody['status'] = status;
+    return this.http.put(apiUrl + "/order",requestBody,{
+      responseType: "text"
+    })
+  };
+
+
 }

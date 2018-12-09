@@ -22,7 +22,7 @@
         </div>
     </div>
     <div *ngIf="getUserRole()=='ADMINISTRATOR'">
-        <app-jumbotron [h1Text]="'Witaj w panelu administratora'">Możesz tu zarządzać książkami, użytkownikami oraz rezerwacjami.</app-jumbotron>
+        <app-jumbotron [h1Text]="'Witaj w panelu administratora'">Możesz tu zarządzać zamówieniami, użytkownikami oraz książkami.</app-jumbotron>
         <div class="container">
             <div class="row">
                 <div class="col-md-4 text-center heading-margin" *ngFor="let heading of headings">

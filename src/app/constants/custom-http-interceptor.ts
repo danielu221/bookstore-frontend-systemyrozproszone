@@ -32,7 +32,9 @@ export class CustomHttpInterceptor implements HttpInterceptor {
     for (const key of request.headers.keys()) {
       headerSettings[key] = request.headers.getAll(key);
     }
-    if (token) {
+
+    const re = /localhost/gi;
+    if (token && request.url.search(re) !== -1) {
       headerSettings["Authorization"] = token;
     }
     console.log(token);

@@ -1,0 +1,35 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 text-center">
+    <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef> Tytul </th>
+        <td mat-cell *matCellDef="let googleBook"> {{googleBook.title}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="author">
+      <th mat-header-cell *matHeaderCellDef> Autorzy </th>
+      <td mat-cell *matCellDef="let googleBook">
+        <ul>
+            <li *ngFor="let author of googleBook.authors">
+                <span>{{author}}</span>
+             </li>
+        </ul>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="preview">
+      <th mat-header-cell *matHeaderCellDef> Podglad </th>
+      <td mat-cell *matCellDef="let googleBook"><a class="btn btn-primary" href="{{googleBook.preview}}">Wiecej</a> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef> Zamow</th>
+      <td mat-cell *matCellDef="let googleBook">
+        <a *ngIf="googleBook.buyLink !== 'Brak mozliwosci'" class="btn btn-primary" href="{{googleBook.buyLink}}">Zamow</a>
+        <span *ngIf="googleBook.buyLink === 'Brak mozliwosci'">Brak mozliwosci</span>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>

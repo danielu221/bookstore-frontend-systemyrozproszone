@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild,ChangeDetectorRef } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatTableDataSource, MatPaginator } from "@angular/material";
 import {MatDialog} from '@angular/material';
 import {OrderService} from '../../services/order.service';
@@ -16,7 +16,7 @@ export class BasketComponent implements OnInit {
     public dialog: MatDialog,
   ) {}
 
-  orderItems: OrderItem[];
+  orderItems: OrderItem[] = [];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   displayedColumns = ["title", "author", "numOfCopies", "dateOfRelease","action"];
