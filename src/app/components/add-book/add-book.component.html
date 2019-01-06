@@ -1,7 +1,7 @@
 <div class="container">
   <div class="col-md-6 col-md-offset-3">
     <form class="after-header add-book-form" (ngSubmit)="f.form.valid && onAddClick()" #f="ngForm">
-      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !isbn.valid }">
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !id.valid }">
         <label for="id">ISBN</label>
         <input type="text" class="form-control" id="id" name="id" #id="ngModel" [(ngModel)]="book.id" required>
       </div>
